@@ -40,6 +40,8 @@ for data in full_dataset:
 
     data['CLASS'] = data['CLASS'].map({'unacc': 0, 'acc': 1, 'good': 2, 'vgood': 3}).astype(int)
 
+    print(data.head())
+
 feature_elements = ['CLASS']
 features = data.drop(feature_elements, axis = 1)
 np.savetxt(r'features.csv', features.values, fmt='%d', delimiter=',')
@@ -47,3 +49,11 @@ np.savetxt(r'features.csv', features.values, fmt='%d', delimiter=',')
 class_elements = ['BUYING', 'MAINT', 'DOORS', 'PERSONS', 'LUG_BOOT', 'SAFETY']
 classes = data.drop(class_elements, axis = 1)
 np.savetxt(r'class.csv', classes.values, fmt='%d', delimiter=',')
+
+feature_elements = []
+all = data.drop(feature_elements, axis = 1)
+np.savetxt(r'all.csv', all.values, fmt='%d', delimiter=',')
+
+data.to_csv('all_data.csv')
+
+

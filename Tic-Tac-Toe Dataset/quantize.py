@@ -54,3 +54,5 @@ np.savetxt(r'features.csv', features.values, fmt='%d', delimiter=',')
 class_elements = ['TOP-LEFT-SQUARE', 'TOP-MIDDLE-SQUARE', 'TOP-RIGHT-SQUARE', 'MIDDLE-LEFT-SQUARE', 'MIDDLE-MIDDLE-SQUARE', 'MIDDLE-RIGHT-SQUARE', 'BOTTOM-LEFT-SQUARE', 'BOTTOM-MIDDLE-SQUARE', 'BOTTOM-RIGHT-SQUARE']
 classes = data.drop(class_elements, axis = 1)
 np.savetxt(r'class.csv', classes.values, fmt='%d', delimiter=',')
+
+data.to_csv('tic_tac_toe_all_data.csv')

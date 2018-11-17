@@ -1,0 +1,488 @@
+\documentclass[conference]{IEEEtran}
+\IEEEoverridecommandlockouts
+% The preceding line is only needed to identify funding in the first footnote. If that is unneeded, please comment it out.
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+\begin{document}
+
+\title{A Comparative Study of Classification Algorithms\\
+% {\footnotesize \textsuperscript{*}Note: Sub-titles are not captured in Xplore and
+% should not be used}
+% \thanks{Identify applicable funding agency here. If none, delete this.}
+}
+
+% \author{\IEEEauthorblockN{1\textsuperscript{st} Given Name Surname}
+\author{\IEEEauthorblockN{Tanmay Kalani - S20160010096}
+\IEEEauthorblockA{\textit{B.Tech, CSE Dept.} \\
+\textit{IIITS}\\
+SriCity, India \\
+tanmay.k16@iiits.in}
+\and
+\IEEEauthorblockN{G. Mary Ankita - S20160010029}
+\IEEEauthorblockA{\textit{B.Tech, CSE Dept.} \\
+\textit{IIITS}\\
+SriCity, India \\
+maryankitha.g16@iiits.in}
+% \and
+% \IEEEauthorblockN{3\textsuperscript{rd} Given Name Surname}
+% \IEEEauthorblockA{\textit{dept. name of organization (of Aff.)} \\
+% \textit{name of organization (of Aff.)}\\
+% City, Country \\
+% email address}
+% \and
+% \IEEEauthorblockN{4\textsuperscript{th} Given Name Surname}
+% \IEEEauthorblockA{\textit{dept. name of organization (of Aff.)} \\
+% \textit{name of organization (of Aff.)}\\
+% City, Country \\
+% email address}
+% \and
+% \IEEEauthorblockN{5\textsuperscript{th} Given Name Surname}
+% \IEEEauthorblockA{\textit{dept. name of organization (of Aff.)} \\
+% \textit{name of organization (of Aff.)}\\
+% City, Country \\
+% email address}
+% \and
+% \IEEEauthorblockN{6\textsuperscript{th} Given Name Surname}
+% \IEEEauthorblockA{\textit{dept. name of organization (of Aff.)} \\
+% \textit{name of organization (of Aff.)}\\
+% City, Country \\
+% email address}
+}
+
+\maketitle
+
+\begin{abstract}
+% Data Mining is the process of retrieving and identifying useful information with intelligent method from a data set and transform data into comprehensible form. Classification is one of the data mining techniques. It is a process of assigning entities to an already defined class by examining features. Classification is the most common method used for finding a mine rule from a large database. It is used to find out in which class each data instance is related within a data set. Generally, a classification technique follows three approaches Statistical, Machine Learning and Neural Network for classification. A comparative study of classification algorithms such as Decision Trees, Neural Networks and Naive Bayes classifier has been done. Goal of this study is to provide a review these algorithms. A general idea of Data Mining is classification discussed followed by comparison of algorithms. While considering these approaches this paper provides an inclusive survey of different classification algorithms and their features and limitations.
+\textbf{Data Mining} is the way toward recovering and distinguishing helpful data with astute strategy from an informational collection and change information into fathomable shape. \textbf{Classification} is one of the data mining methods. It is a procedure of relegating substances to an officially characterized class by looking at features. Classifying data is the most well-known strategy utilized for finding a mine standard from a substantial database. It is utilized to discover in which class every datum occurrence is connected inside an informational index. A near investigation of classification algorithms, for example, Decision Trees, Neural Networks and Naive Bayes Classifier has been finished. Objective of this investigation is to give an audit these calculations. A general thought of Data Mining is classification talked about pursued by examination of algorithms. While considering these methodologies this paper gives a comprehensive review of various classification calculations and their features and impediments.
+\end{abstract}
+
+\begin{IEEEkeywords}
+Data Mining, Classification, Neural Network, Decision Tree, Naive Bayes Classification
+\end{IEEEkeywords}
+
+\section{Introduction}
+% Data Mining is a process of extraction of useful information from large amount of data. It is used to discover meaningful data and rules from data. Development of the classification criteria is done using a data set of instances for which associated classes are known in advance. This type of learning is termed as supervised learning. Such procedures are trained for making decisions in new situations.
+\textbf{Data Mining} is a procedure of extraction of helpful data from extensive measure of raw data. It is utilized to find important information and principles from data. Development of the classification criteria is finished utilizing a set of data instances for which related classes are known ahead of time. This sort of learning is named as \textbf{supervised learning}. Such algorithms are prepared for making choices in new circumstances.
+
+% Data sets used for training and comparing the different algorithms are the standard classification data sets by \textbf{scikit-learn general data set API}, namely \textbf{Iris, Breast Cancer} and \textbf{Wine} data set and comprise of 150, 569 and 178 already classified instances respectively. These are the data sets often used by the machine learning communities to benchmark algorithms which are used to solve real-life problems.
+Data sets utilized for training and comparing various algorithms are standard classification informational data sets by \textbf{scikit-learn general data set API}, namely \textbf{Iris}, \textbf{Breast Cancer} and \textbf{Wine} data sets and involve 150, 569 and 178 classified instance respectively. These are the data sets regularly utilized by the machine learning networks to benchmark algorithms which are utilized to take care of real-life problems.
+
+% A comparative study of classification algorithms such as Neural Networks, Bayes Classifier and Decision Trees has been done. Scikit-learn models are used to train, classify and measure accuracy of data sets. Bayesian Classifier is \textbf{Gaussian Naive Bayes Classifier}. The neural network used is a \textbf{MLP} (multi-layer perceptron) classifier. Decision trees work on the optimized version of \textbf{CART} algorithm.
+A similar investigation of algorithms, for example, \textbf{Neural Networks}, \textbf{Bayes Classifier} and \textbf{Decision Trees} has been finished. \textbf{Scikit-learn} models are utilized to train, classify and measure precision and accuracy of data sets. Bayesian Classifier is \textbf{Gaussian Naive Bayes Classifier}. The Neural Network implemented is a \textbf{MLP(Multi-Layer Perceptron)} classifier. Decision trees chip away at the optimized adaptation of \textbf{CART} algorithm[1].
+
+\section{Information Theory}
+
+\subsection{Neural Network}
+\centerline{\includegraphics[width=4cm,height=4cm]{MLPClassifier.png}}
+% The neural network used here is a \textbf{Multi-Layer perceptron} which is a non-linear function approximator which can be used for either classification or regression. MLPClassifier learns using function 
+The neural network utilized here is a \textbf{Multi-Layer perceptron} which is a non-linear function approximator which can be utilized for classification . MLPClassifier learns using function $$ \textit{f} (\cdot) : \textit{R}^{m} \rightarrow  \textit{R}^o $$ where \textit{m} and \textit{o} are the dimensions of input and output respectively. 
+
+The neural node in the hidden layer transforms the values from the previous layer by a weighted sum $ z = w_{1} x_{1} + w_{2} x_{2} + ... + w_{n} x{n} $ which is followed by a non-linear activation function - \textit{hyperbolic tanh} $$ z = \frac{e^{z} - e^{-z}}{e^{z} + e^{-z}} $$
+
+MLP training uses \textit{Stochastic Gradient Descent}. It updates parameters using gradient of the loss function respect to parameter that requires adaptaion $$ w \leftarrow w - \eta ( \alpha \frac{\partial R(w)}{\partial w} + \frac{\partial Loss}{\partial w} ) $$ where $\eta$ is the learning rate, $\alpha$ is a on-negative hyper-parameter that controls the magnitude of penalty and $Loss$ is loss function.
+
+MLP uses Square Loss Error function $$ Loss = \frac{1}{2} \sum_{r=1}^{c}(t_{r}-z_{r})^{2}$$
+
+Time complexity of a network with \textit{h} hidden layers and \textit{k} nodes, \textit{i} input nodes and \textit{o} output nodes is $$ O(n \cdot m \cdot h^{k} \cdot o \cdot i ) $$ where \textit{n} is the number of training samples and \textit{m} is the number of features.
+
+Each of the data sets were trained with a neural network of one hidden layer with 100 nodes, $\alpha = 0.0001 $, $ \eta = 0.001 $ over 200 epochs or more and stopping criteria $ \epsilon = 0.01 $.
+
+\subsection{Decision Trees}
+\centerline{\includegraphics[width=4cm,height=4cm]{decision-tree.png}}
+% Decision Trees are a non-parametric supervised leaning method used for classification. It creates binary decision tree i.e. every node has two branches.
+Decision Trees are a non-parametric supervised learning method used for classification. It makes twofold choices at any node i.e. it contructs a binary decision tree.
+
+If a target is classification outcome taking on values 0,1,…,K-1, for node \textit{m}, representing a region $R_{m}$ with $N_{m}$ observations, let $$ p_{m,k} = 1/N_{m} \sum_{x_{i} \in R_{m}}I(y_{i}=k) $$ let be the proportion of class $k$ observations in node $m$.
+Common Measures of impurity in \textbf{Gini} (variance impurity)$$ H(X_(m)) = \sum_{k}p_{mk}(1-p_{mk})$$ and \textbf{Cross-Entropy} (information impurity) $$ H(X_{m}) = - \sum_{k} p_{mk} log(p_{mk})$$ and \textbf{Missclassification} $$H(X_{m}) = 1 - max(p_{mk})$$ where $X_{m}$ is the training data in node $m$.
+
+% \textbf{CART} (Classification and Regression Trees) is very similar to C4.5, but it differs in that it supports numerical target variables (regression) and does not compute rule sets. CART constructs binary trees using the feature and threshold that yield the largest information gain at each node.
+\textbf{CART(Classification and Regression Trees)} is extremely similar to \textbf{C4.5}[2][3], yet it varies in that it underpins numerical target variables (regression) and does not compute rule sets. CART constructs binary trees utilizing the feature and threshold that yield the largest information gain at every node.
+
+The run time to construct a binary tree is $O(n_{samples}n_{features}log(n_{samples})$ and query time is $O(log(n_{samples}))$. In order to find the features that offer the largest reduction in entropy there is a penalty of $O(n_{features})$ at each node. So the final cost adds up to $O(n_{features}n_{samples}^{2}log(n_{samples})$.
+
+% Each of the data sets has been trained and tested on \textit{Gini} and \textit{Cross-entropy} impurity functions with different depths.
+Every data set has been trained and tested on \textbf{Gini} and \textbf{Cross-entropy} impurity functions with different tree depths.
+
+\subsection{Gaussian Naive Bayes Classifier}
+% Naive Bayes methods are a set of supervised learning algorithms based on applying Bayes’ theorem with the “naive” assumption of conditional independence between every pair of features given the value of the class variable. When plotted, it gives a bell shaped curve which is symmetric about the mean of the feature values as shown below:
+Naive Bayes method are an arrangement of supervised learning algorithms dependent on applying Bayes' theorem with the "naive" suspicion of conditional independence between every pair of features given the estimation of the class variable. Whenever plotted, it gives a bell formed bend which is symmetric about the mean of the feature values as demonstrated as follows:
+\centerline{\includegraphics[width=4cm,height=4cm]{GaussianNB.png}}
+A Gaussian distribution is also called Normal distribution.
+
+The likelihood of the features is assumed to be Gaussian: $$ P(X_{i}|y) = \frac{1}{\sqrt{2\pi\sigma_{y}^{2}}}exp\Bigg(-\frac{(x_{i}-\mu_{y})}{2\sigma_{y}^{2}}\Bigg)$$
+
+Time complexity of Gaussian Naive Bayes is $O(nm)$ where $n$ is the number of training data instances and $m$ is the dimensionality of the features. 
+
+
+\section{Training and Testing}
+% Data sets used for training and comparing the different algorithms are the standard classification data sets by \textbf{scikit-learn general data set API}, namely \textbf{Iris, Breast Cancer} and \textbf{Wine} data set and comprise of 150, 569 and 178 already classified instances respectively. These are the data sets often used by the machine learning communities to benchmark algorithms which are used to solve real-life problems.
+Data sets utilized for training and comparing at the different algorithms are the standard characterization data sets by \textbf{scikit-learn} general informational index API, namely \textbf{Iris}, \textbf{Breast Cancer} and \textbf{Wine} data set and contain 150, 569 and 178 already classified instances individually.
+
+\subsection{Iris Data set}\label{AA}
+% The Iris flower data set or Fisher's Iris data set is a multivariate data set introduced by the British statistician and biologist Ronald Fisher[1]. This data set comprises of 150 already classified instances with a class distribution of 33.33\%. Each data instance consists of 4 features (attributes) namely, sepal length, sepal width, petal length, petal width. Each of these lengths are measured in $cms$. Data instances are classified into 3 classes. namely, $Setose$, $Versicolor$ and $Virginica$.
+The Iris flower data set or Fisher's Iris data set is a multivariate data set presented by the British analyst and scholar Ronald Fisher[4]. This data includes 150 effectively classified instances with a class dispersion of 33.33\%. Every datum instance comprises of 4 features (properties) in particular, sepal length, sepal width, petal length, petal width. Every one of these lengths are estimated in $cms$. Each set of these features is classified into either of the 3 classes to be specific $Setose$, $Versicolor$ and $Virginica$.
+
+\subsubsection{Neural Network}
+\begin{itemize}
+\item Ratio of test set to data set was set at 0.25
+\item Iris data set did not converge for 200 epochs, so maximum iterations was set at 1000.
+% \item Accuracies on training and testing data set were 97\% and 92\% respectively, which was not good enough. This happened because data was not scaled. So, \textbf{text normalization} was performed as a preprocessing step using $StandardScaler$ by $sklearn$.
+\item Correctnesses on training and testing data sets were 97\% and 92\% individually, which was bad enough. This happened on the grounds that information was not scaled. In this way, \textbf{data normalization} was executed as a \textbf{preprocessing} step with \textit{StandardScaler} by \textit{sklearn}.
+\item After standardization of data, accuracy on test data boosted to 97\% as show in "Fig. 1".
+\begin{figure}[htbp]
+\centerline{\includegraphics[width=8cm,height=4cm]{Iris-MLP-Accuracy.png}}
+\caption{Accuracy on training data sets}
+\label{fig}
+\end{figure}
+
+% \item Colorbar in "Fig. 2" weights of each of the features. Rows in the plot are 4 feature names and the columns are 100 nodes of hidden layer. Blue is associated with a more positive value and green is associated with negative values. The more the blue area in the row of a feature, the more is its importance. Notice the strip of $petal$ $width$, which has the maximum number of blue points, thus is the deciding factor.
+\item Colorbar in "Fig. 2" depicts weights of every one of the features .Rows in the plot are 4 feature names and the columns are 100 nodes of hidden layer. Blue is related with positive values and green is related with negative values. The more the blue zone in the strip of an element, the more is its significance. Notice the strip of $petal$ $width$,which has the maximum number of blue focuses, hence is the central factor.
+\begin{figure}[htbp]
+\centerline{\includegraphics[width=8cm,height=3cm]{Iris-Dataset-MLP-heat-map.png}}
+\caption{Accuracy on training data sets}
+\label{fig}
+\end{figure}
+\end{itemize}
+
+\subsubsection{Decision Trees}
+\begin{itemize}
+\item Test Set was one-fourth the size of data set.
+% \item When the tree was allowed to grow fully with \textbf{Cross-Entropy} impurity, accuracy on the training set was 100\%, which is a case of over-fitting. So \textbf{pre-pruning} methods such as $limiting$ $max$ $depth$ was applied. As a result, accuracy on the training set reduced from 100\% to 99.107\%, but test accuracy increased from 92.105\% to 94.30\%.
+\item At the point when the tree was permitted to develop completely with \textbf{Cross-Entropy} impurity, accuracy on the training set was 100\%, which is an example of over-fitting. So \textbf{pre-pruning} techniques, for example, limiting max depth was applied. Subsequently, accuracy on the training set decreased from 100\% to 99.107\%, yet test set accuracy expanded from 92.105\% to 94.30\%.
+\begin{figure}[!htb]
+   \begin{minipage}{0.2\textwidth}
+     \centering
+     \includegraphics[width=.8\linewidth]{Iris-DT-Entropy-Dataset-Training.png}
+     \caption{Training Data set Accuracy with Entropy impurity}\label{Fig:Data1}
+   \end{minipage}\hfill
+   \begin{minipage}{0.2\textwidth}
+     \centering
+     \includegraphics[width=.8\linewidth]{Iris-DT-Entropy-Dataset-Test.png}
+     \caption{Test Data set Accuracy with Entropy impurity}\label{Fig:Data2}
+   \end{minipage}
+\end{figure}
+\begin{figure}[!htb]
+   \begin{minipage}{0.2\textwidth}
+     \centering
+     \includegraphics[width=.8\linewidth]{Iris-DT-GINI-Dataset-Training.png}
+     \caption{Training Data set Accuracy with GINI impurity}\label{Fig:Data1}
+   \end{minipage}\hfill
+   \begin{minipage}{0.2\textwidth}
+     \centering
+     \includegraphics[width=.8\linewidth]{Iris-DT-GINI-Dataset-Test.png}
+     \caption{Test Data set Accuracy with GINI impurity}\label{Fig:Data2}
+   \end{minipage}
+\end{figure}
+% \item When the tree was allowed to grow fully with \textbf{GINI} impurity, accuracy on the training set was 100\%, which is a case of over-fitting. So \textbf{pre-pruning} methods such as $limiting$ $max$ $depth$ was applied. As a result, accuracy on the training set reduced from 100\% to 98.214\% and test accuracy decreased from 92.105\% to 89.47\%.
+\item Exactly when the tree was allowed to grow totally with \textbf{GINI} impurity, accuracy on the training set was 100\%, which is an occurrence of over-fitting. So \textbf{pre-pruning} methods, for instance, limiting max depth was associated. Thus, accuracy on the training set diminished from 100\% to 98.214\%, yet test accuracy went down from 92.105\% to 89.47\%.
+\begin{figure}[!htb]
+   \begin{minipage}{0.2\textwidth}
+     \centering
+     \includegraphics[width=.95\linewidth, height=4cm]{Iris-DT-GINI-4-max-depth.png}
+     \caption{Decision Tree with GINI impurity with pre-pruning}\label{Fig:Data1}
+   \end{minipage}\hfill
+   \begin{minipage}{0.2\textwidth}
+     \centering
+     \includegraphics[width=.95\linewidth, height=4cm]{Iris-DT-GINI-no-depth-limit.png}
+     \caption{Decision Tree without GINI impurity with pre-pruning}\label{Fig:Data2}
+   \end{minipage}
+\end{figure}
+% \item "Fig. 7" is a decision tree with a depth-limit of 4 and "Fig. 8" is a decision tree without any depth-limit. Limiting a decision tree is a part of pre-pruning so that model does not overfit and can classify new data with a much higher accuracy.
+\item "Fig. 7" is a decision tree with a depth-limit of 4 and "Fig. 8" is a decision tree with no depth restrain. Constraining a decision tree is a piece of $pre-pruning$ so model does not overfit and can classify new feature sets with a considerably higher accuracy.
+% \item "Fig. 9" shows the feature importance. It can be inferred $petal$ $width$ has the highest feature importance and is also at the $root$ of the Decision Tree. Thus, it plays a major role in deciding class of the data instance.
+\item "Fig. 9" demonstrates the feature significance. It tends to be inferred $petal$ $width$ has the most elevated feature importance and is also at the $root$ of the Decision Tree. In this way, it assumes a major job in deciding class of the data instance.
+\begin{figure}[htbp]
+\centerline{\includegraphics[width=8cm,height=4cm]{Iris-DT-Feature-Importance.png}}
+\caption{Feature Importance of Iris Data Set}
+\label{fig}
+\end{figure}
+\end{itemize}
+
+\subsubsection{Gaussian Naive Bayes}
+\begin{itemize}
+\item Proportion of test set to data set was set at 0.25
+\item Accuracy of Gaussian Naive Bayes was 97.368\%.
+\end{itemize}
+
+\begin{table}
+\caption{Iris Data set}
+\begin{center}
+\begin{tabular}{|c|c|c|}
+    \hline
+    Algorithm & Accuracy\\
+    \hline
+    Multi-Layer Perceptron & 97\%\\
+    \hline
+    Decision Tree - Cross Entropy & 94.30\%\\
+    \hline
+    Decision Tree - GINI Impurity & 89.47\%\\
+    \hline
+    Gaussian Naive Bayes & 97.368\%\\
+    \hline
+\end{tabular}
+\end{center}
+\end{table}
+
+\subsection{Breast Cancer Data Set}\label{AA}
+Features in the data set are computed from a digitized image of a \textbf{fine needle aspirate} of a breast mass. They describe characteristics of the cell nuclei present in the image and was first used in 1993 by W.N. Street[5]. The data set comprises of 569 already classified instances. Each data instance consisted of 30 features (attributes). Data instances are classified into two classes $Malignant$ and $Benign$ with 212 and 357 data instances respectively.
+\subsubsection{Neural Network}
+\begin{itemize}
+\item Ratio of test set to data set was set at 0.25
+\item Cancer data set did not converge for 200 epochs, so maximum iterations was set at 1000.
+\item Accuracies on training and testing data set were 93.89\% and 92.30\% respectively, which was not good enough. This happened because data was not scaled. So, \textbf{text normalization} was performed as a preprocessing step using $StandardScaler$ by $sklearn$.
+\item After standardization of data, accuracy on test data boosted to 95.804\% as show in "Fig. 10".
+\begin{figure}[htbp]
+\centerline{\includegraphics[width=8cm,height=4cm]{BC-MLP-Test-Set-Accuracy.png}}
+\caption{Accuracy on test data sets}
+\label{fig}
+\end{figure}
+
+\item Colorbar in "Fig. 11" weights of each of the features. Rows in the plot are 30 feature names and the columns are 100 nodes of hidden layer. Blue is associated with a more positive value and green is associated with negative values. The more the blue area in the row of a feature, the more is its importance. Notice the strips of $Smoothness$ $error$ and $Fractal$ $Dimension$ $error$ which have all green pixels, thus, they do not play a significant role in classification whereas $worst$ $radius$ has the maximum number of blue pixels which increases its importance.
+\begin{figure}[htbp]
+\centerline{\includegraphics[width=8cm,height=3cm]{BC-MLP-Heat-Map.png}}
+\caption{Color Bar of features}
+\label{fig}
+\end{figure}
+\end{itemize}
+
+\subsubsection{Decision Trees}
+\begin{itemize}
+\item Test Set was one-fourth the size of data set.
+\item When the tree was allowed to grow fully with \textbf{Cross-Entropy} impurity, accuracy on the training set was 100\%, which is a case of over-fitting. So \textbf{pre-pruning} methods such as $limiting$ $max$ $depth$ was applied. As a result, accuracy on the training set reduced from 100\% to 98.591\%, but test accuracy increased from 94.405\% to 95.804\%.
+\begin{figure}[!htb]
+   \begin{minipage}{0.2\textwidth}
+     \centering
+     \includegraphics[width=.8\linewidth]{BC-DT-Entropy-Training.png}
+     \caption{Training Data set Accuracy with Entropy impurity}\label{Fig:Data1}
+   \end{minipage}\hfill
+   \begin{minipage}{0.2\textwidth}
+     \centering
+     \includegraphics[width=.8\linewidth]{BC-DT-Entropy-Test.png}
+     \caption{Test Data set Accuracy with Entropy impurity}\label{Fig:Data2}
+   \end{minipage}
+\end{figure}
+\begin{figure}[!htb]
+   \begin{minipage}{0.2\textwidth}
+     \centering
+     \includegraphics[width=.8\linewidth]{BC-DT-GINI-Training.png}
+     \caption{Training Data set Accuracy with GINI impurity}\label{Fig:Data1}
+   \end{minipage}\hfill
+   \begin{minipage}{0.2\textwidth}
+     \centering
+     \includegraphics[width=.8\linewidth]{BC-DT-GINI-Test.png}
+     \caption{Test Data set Accuracy with GINI impurity}\label{Fig:Data2}
+   \end{minipage}
+\end{figure}
+\item When the tree was allowed to grow fully with \textbf{GINI} impurity, accuracy on the training set was 100\%, which is a case of over-fitting. So \textbf{pre-pruning} methods such as $limiting$ $max$ $depth$ was applied. As a result, accuracy on the training set reduced from 100\% to 98.826\%, but test accuracy increased from 93.706\% to 95.104\%.
+\begin{figure}[!htb]
+   \begin{minipage}{0.2\textwidth}
+     \centering
+     \includegraphics[width=.95\linewidth, height=4cm]{BC-DT-GINI-4-max-depth.png}
+     \caption{Decision Tree with GINI impurity with pre-pruning}\label{Fig:Data1}
+   \end{minipage}\hfill
+   \begin{minipage}{0.2\textwidth}
+     \centering
+     \includegraphics[width=.95\linewidth, height=4cm]{BC-DT-GINI-no-depth-limit.png}
+     \caption{Decision Tree without GINI impurity with pre-pruning}\label{Fig:Data2}
+   \end{minipage}
+\end{figure}
+\item "Fig. 16" is a decision tree with a depth-limit of 4 and "Fig. 17" is a decision tree without any depth-limit. Limiting a decision tree is a part of pre-pruning so that model does not overfit and can classify new data with a much higher accuracy.
+\item "Fig. 18" shows the feature importance. It can be inferred $worst$ $radius$ has the highest feature importance and is also at the $root$ of the Decision Tree. Thus, it plays a major role in deciding class of the data instance. Worst Radius may be an important feature, but it might not tell us that a higher radius does not indicate sample being $Malignant$ or $benign$.
+\begin{figure}[htbp]
+\centerline{\includegraphics[width=8cm,height=4cm]{BC-DT-Feature-Importance.png}}
+\caption{Feature Importance of Breast Cancer Data Set}
+\label{fig}
+\end{figure}
+\end{itemize}
+
+\subsubsection{Gaussian Naive Bayes}
+\begin{itemize}
+\item Proportion of test set to data set was set at 0.25
+\item Accuracy of Gaussian Naive Bayes was 92.30\%.
+\end{itemize}
+
+\begin{table}
+\caption{Breast Cancer Data set}
+\begin{center}
+\begin{tabular}{|c|c|c|}
+    \hline
+    Algorithm & Accuracy\\
+    \hline
+    Multi-Layer Perceptron & 95.804\%\\
+    \hline
+    Decision Tree - Cross Entropy & 95.804\%\\
+    \hline
+    Decision Tree - GINI Impurity & 95.104\%\\
+    \hline
+    Gaussian Naive Bayes & 92.30\%\\
+    \hline
+\end{tabular}
+\end{center}
+\end{table}
+
+\subsection{Wine Data Set}\label{AA}
+% The data is result of chemical analysis of wines grown in same region of Italy by 3 different cultivators. The data set comprises of 178 already classified data instances. Each of these instance consists of 13 features(attributes). Data instances are classified into three classes namely $class_0$, $class_1$, $class_2$ with 59, 71, 48 respectively.
+The data is eventual outcome of manufactured examination of wines grown in same district of Italy by 3 particular cultivators. The data set contains 178 viably classified data events. Each of these instanced contain 13 features(attributes). Each of these feature sets are classified into three classes namely $class_0$, $class_1$ ,$class_2$ with 59, 71, 48 independently.
+\subsubsection{Neural Network}
+\begin{itemize}
+\item Ratio of test set to data set was set at 0.25
+\item Wine data set did not converge for 200 epochs, so maximum iterations was set at 1000.
+% \item Accuracies on training and testing data set were 60.90\% and 68.88\% respectively, which was not good enough. This happened because data was not scaled. So, \textbf{text normalization} was performed as a preprocessing step using $StandardScaler$ by $sklearn$.
+\item Correctnesses on training and testing data set were 60.90\% and 68.88\% independently, which was terrible enough. This occurred in light of the fact that data was not scaled. Along these lines, \textbf{data normalization} was executed as a \textit{pre-processing} step using \textit{Standard Scaler} by \textit{sklearn}.
+\item After standardization of data, accuracy on test data boosted to 100\% as show in "Fig. 19".
+\begin{figure}[htbp]
+\centerline{\includegraphics[width=8cm,height=4cm]{W-MLP-Test-Set-Accuracy.png}}
+\caption{Accuracy on test data sets}
+\label{fig}
+\end{figure}
+
+% \item Colorbar in "Fig. 20" weights of each of the features. Rows in the plot are 13 feature names and the columns are 100 nodes of hidden layer. Blue is associated with a more positive value and green is associated with negative values. The more the blue area in the row of a feature, the more is its importance. Notice the strips of $OD280/OD315$ has the maximum number of blue pixels which increases its importance.
+\item Colorbar in "Fig. 20" weights of all of the features. Rows in the plot are 13 feature names and the columns are 100 nodes of hidden layer. Blue is connected with a more positive regard and green is connected with negative regard. The more the blue zone in the strip of a feature, the more is its importance. Notice the strips of $OD280/OD315$ has the most outrageous number of blue pixels which constructs its criticalness.
+\begin{figure}[htbp]
+\centerline{\includegraphics[width=8cm,height=3cm]{W-MLP-Heat-Map.png}}
+\caption{Color Bar of features}
+\label{fig}
+\end{figure}
+\end{itemize}
+
+\subsubsection{Decision Trees}
+\begin{itemize}
+\item Test Set was one-fourth the size of data set.
+% \item When the tree was allowed to grow fully with \textbf{Cross-Entropy} impurity, accuracy on the training set was 100\%, which is a case of over-fitting. So \textbf{pre-pruning} methods such as $limiting$ $max$ $depth$ was applied. As a result, accuracy on the training set reduced from 100\% to 98.496\%, but test accuracy increased from 93.33\% to 94.33\%.
+\item Right when the tree was allowed to grow totally with Cross-Entropy impurity impact, precision on the training set was 100\%,which is a case of over-fitting. So pre-pruning methods such as limiting max depth was associated. Hence ,accuracy on the arrangement set lessened from 100\% to 98.496\%, yet test precision extended from 93.33\% to 94.33\%.
+\begin{figure}[!htb]
+   \begin{minipage}{0.2\textwidth}
+     \centering
+     \includegraphics[width=.8\linewidth]{W-DT-Entropy-Training.png}
+     \caption{Training Data set Accuracy with Entropy impurity}\label{Fig:Data1}
+   \end{minipage}\hfill
+   \begin{minipage}{0.2\textwidth}
+     \centering
+     \includegraphics[width=.8\linewidth]{W-DT-Entropy-Test.png}
+     \caption{Test Data set Accuracy with Entropy impurity}\label{Fig:Data2}
+   \end{minipage}
+\end{figure}
+\begin{figure}[!htb]
+   \begin{minipage}{0.2\textwidth}
+     \centering
+     \includegraphics[width=.8\linewidth]{W-DT-GINI-Training.png}
+     \caption{Training Data set Accuracy with GINI impurity}\label{Fig:Data1}
+   \end{minipage}\hfill
+   \begin{minipage}{0.2\textwidth}
+     \centering
+     \includegraphics[width=.8\linewidth]{W-DT-GINI-Test.png}
+     \caption{Test Data set Accuracy with GINI impurity}\label{Fig:Data2}
+   \end{minipage}
+\end{figure}
+\item When the tree was allowed to grow fully with \textbf{GINI} impurity, accuracy on the training set was 100\%, which is a case of over-fitting. So \textbf{pre-pruning} methods such as $limiting$ $max$ $depth$ was applied. As a result, accuracy on the training set reduced from 100\% to 97.74\%, but test accuracy remained constant at 88.88\%.
+\begin{figure}[!htb]
+   \begin{minipage}{0.2\textwidth}
+     \centering
+     \includegraphics[width=.95\linewidth, height=4cm]{W-DT-GINI-3-depth-limit.png}
+     \caption{Decision Tree with GINI impurity with pre-pruning}\label{Fig:Data1}
+   \end{minipage}\hfill
+   \begin{minipage}{0.2\textwidth}
+     \centering
+     \includegraphics[width=.95\linewidth, height=4cm]{W-DT-GINI-no-deth-limit.png}
+     \caption{Decision Tree without GINI impurity with pre-pruning}\label{Fig:Data2}
+   \end{minipage}
+\end{figure}
+\item "Fig. 25" is a decision tree with a depth-limit of 3 and "Fig. 26" is a decision tree without any depth-limit. Limiting a decision tree is a part of pre-pruning so that model does not overfit and can classify new data with a much higher accuracy.
+% \item "Fig. 27" shows the feature importance. It can be inferred $proline$ has the highest feature importance and is also at the $root$ of the Decision Tree. Thus, it plays a major role in deciding class of the data instance.
+\item "Fig. 27" exhibits the segment note worthiness. It might be inferred $proline$ has the most raised component importance and is in like manner at the root of the Decision Tree. As such, it plays a critical role in picking class of the data instance.
+\begin{figure}[htbp]
+\centerline{\includegraphics[width=8cm,height=4cm]{W-DT-Feature-Importance.png}}
+\caption{Feature Importance of Wine Data Set}
+\label{fig}
+\end{figure}
+\end{itemize}
+
+\subsubsection{Gaussian Naive Bayes}
+\begin{itemize}
+\item Proportion of test set to data set was set at 0.25
+\item Accuracy of Gaussian Naive Bayes was 95.55\%.
+\end{itemize}
+
+\begin{table}
+\caption{Wine Data Set}
+\begin{center}
+\begin{tabular}{|c|c|c|}
+    \hline
+    Algorithm & Accuracy\\
+    \hline
+    Multi-Layer Perceptron & 100\%\\
+    \hline
+    Decision Tree - Cross Entropy & 94.33\%\\
+    \hline
+    Decision Tree - GINI Impurity & 97.74\%\\
+    \hline
+    Gaussian Naive Bayes & 95.55\%\\
+    \hline
+\end{tabular}
+\end{center}
+\end{table}
+
+\section{Conclusion}
+All classifiers were trained and testes on same dissemination of training and testing data sets. Every one of them gave palatable outcomes considering they were prepared with not very many data instances.
+
+Gaussian Naive Bayes scored the highest accuracy (97.368\%) for IRIS data set. Decision Tree with Cross-Entropy impurity scored highest accuracy (95.804\%) for Brest Cancer Data set. Decision Tree with GINI impurity scored the highest accuracy (95.55\%) for Wine Data set.
+
+% Gaussian Naive Bayes achieved the best satisfactory results for each of these data sets. Decision Tree Classifier had the smallest time complexity. Neural Networks can have high accuracies for but they take the longest to train and have extensibility issues due to their extremely large and complex nature.
+Gaussian Naive Bayes achieved the best appealing results for all of these data sets. Decision Tree Classifier had the humblest time complexity. Neural Networks can have high accuracy for yet they take the longest to execute and have extensibility issues due to their to an large and complex nature.
+
+% Bayesian Classifier is a probabilistic model and can have certain stable states. To work with continous data, a binning algorithm is used but if not not used properly there can occur loss of useful information.
+Bayesian Classifier is a probabilistic model and can have certain stable states. To work with continous data, a binning algorithm is utilized however in the event that not utilized appropriately there can happen loss of important data.
+
+% If the Decision Trees are allowed to develop completely they may form an over-fitted model, which is very good for training examples but might not perform good for new test data. Moreover, these trees are base on heuristic algorithms such as greedy algorithms where locally optimal decisions are made at each node which does not guarantee globally optimal decision tree.
+On the off chance that the Decision Trees are permitted to grow totally they may frame an over-fitted model, which is useful for training instances however probably won't perform useful for new test data. Besides, these trees are base on heuristic calculations, for example, greedy algorithms where locally ideal choices are made at every node which does not ensure all around optimal decision tree.
+
+% Neural Networks uses a non-linear activation function. It has a capability to learn non-linear models but, if the starting random weights are not choosen properly it can end up in a local minimum with different validation accuracy. Also, it is sensitive to feature scaling.
+Neural Networks utilizes a non-linear activation function. It has a capacity to learn non-linear models at the same time, if the beginning arbitrary weights are not choosen appropriately it can wind up in a local minimum least with different validation accuracy. Likewise, it is imperative to include scaling.
+
+% \section*{Acknowledgment}
+
+% The preferred spelling of the word ``acknowledgment'' in America is without 
+% an ``e'' after the ``g''. Avoid the stilted expression ``one of us (R. B. 
+% G.) thanks $\ldots$''. Instead, try ``R. B. G. thanks$\ldots$''. Put sponsor 
+% acknowledgments in the unnumbered footnote on the first page.
+
+% \section*{References}
+
+% Please number citations consecutively within brackets \cite{b1}. The 
+% sentence punctuation follows the bracket \cite{b2}. Refer simply to the reference 
+% number, as in \cite{b3}---do not use ``Ref. \cite{b3}'' or ``reference \cite{b3}'' except at 
+% the beginning of a sentence: ``Reference \cite{b3} was the first $\ldots$''
+
+% Number footnotes separately in superscripts. Place the actual footnote at 
+% the bottom of the column in which it was cited. Do not put footnotes in the 
+% abstract or reference list. Use letters for table footnotes.
+
+% Unless there are six authors or more give all authors' names; do not use 
+% ``et al.''. Papers that have not been published, even if they have been 
+% submitted for publication, should be cited as ``unpublished'' \cite{b4}. Papers 
+% that have been accepted for publication should be cited as ``in press'' \cite{b5}. 
+% Capitalize only the first word in a paper title, except for proper nouns and 
+% element symbols.
+
+% For papers published in translation journals, please give the English 
+% citation first, followed by the original foreign-language citation \cite{b6}.
+
+\begin{thebibliography}{00}
+\bibitem{b1} https://scikit-learn.org/stable/modules/tree.html
+\bibitem{b2} Badr HSSINA, Abdelkarim MERBOUHA, Hanane EZZIKOURI, Mohammed ERRITALI, A comparative study of decision tree ID3 and C4.5, 2014,
+\bibitem{b3} I. S. Jacobs and C. P. Bean, `` REVIEW OF DECISION TREE DATA MINING ALGORITHMS: ID3 AND C4.5'', 2015.
+\bibitem{b4} Fisher, R.A. “The use of multiple measurements in taxonomic problems” Annual Eugenics, 7, Part II, 179-188 (1936); also in “Contributions to Mathematical Statistics” (John Wiley, NY, 1950).
+\bibitem{b5} W.N. Street, W.H. Wolberg and O.L. Mangasarian. Nuclear feature extraction for breast tumor diagnosis. IS&T/SPIE 1993 International Symposium on Electronic Imaging: Science and Technology, volume 1905, pages 861-870, San Jose, CA, 1993.
+\bibitem{b6} M. L. Zhang and Z. H. Zhou. “A Review on Multi-Label Learning Algorithms”. In: IEEE Transactions on Knowledge and Data Engineering 26.8 (Aug. 2014), pp. 1819– 1837. issn: 1041-4347. doi: 10.1109/TKDE.2013.39.
+\end{thebibliography}
+\vspace{12pt}
+% \color{red}
+% IEEE conference templates contain guidance text for composing and formatting conference papers. Please ensure that all template text is removed from your conference paper prior to submission to the conference. Failure to remove the template text from your paper may result in your paper not being published.
+
+\end{document}
